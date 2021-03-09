@@ -1,0 +1,13 @@
+FROM jenkins/ssh-agent 
+
+RUN apt-get update \
+    && apt-get install -y python3 \
+    && apt-get install -y ansible \
+   # && apt-get install -y openjdk-8-jdk \
+    #optimization
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean  
+
+ENV JENKINS_AGENT_SSH_PUBKEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDhhHziA0m4Srig5IggALbDNBM9HySywQqAZ5EY6DprTrsz+3/WoIsx6mBha4+BVY+/QeZeNjmWUWQnkHDHY7rvvdy1ZnfeQWat6Ko8CMsElMw5bbSQ3sOEBsplPe8BqDhPUH2OkSZQQh6tGdFKTQLS/5xclot6mVFcDbP4kB0FhDL34lnBeKC51lCZkrUS1DgK0UC+xlncfxzPP14U5ccs7goRHgvDa4pA64+6I2ymZZ43ruIilhYiPvbo2M7jE4YCRe1dXdsH6DzPW8LNki+01mDJxt62uY3Yh5taNC/+KW7J3ISkQesT9ZeIBd43jgHtTOZS/vhQTtGtsti8LolR vladimir@localhost.localdomain"
+
+ENV JAVA_HOME="/usr/local/openjdk-8/"
