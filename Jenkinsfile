@@ -11,7 +11,7 @@ node("my_agent") {
         sh tests.sh
     }
     stage('Auth and push image'){
-        docker.withRegistry('https://hub.docker.com/', 'dockerHub') {
+        docker.withRegistry('https://registry.hub.docker.com/', 'dockerHub') {
             myImage.push()
         }
     }
