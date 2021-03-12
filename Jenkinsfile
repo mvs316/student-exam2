@@ -9,8 +9,9 @@ node("my_agent") {
     }
 
     stage('Build image') {
-         args '-v /var/run/docker.sock:/var/run/docker.sock'
          myImage = docker.build("vmarkovskii/student-exam2:web_app")
+         args '-v /var/run/docker.sock:/var/run/docker.sock'
+
     }
     stage('Testing') {
         sh tests.sh
