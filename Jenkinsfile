@@ -4,14 +4,16 @@ node("my_agent") {
         checkout scm
     }
 
+    stage('Testing') {
+        sh 'tests.sh'
+    }
+    
     stage('Build image') {
          myImage = docker.build("vmarkovskii/student-exam2:web_app")
      
 
     }
-    stage('Testing') {
-        sh 'tests.sh'
-    }
+    
     stage('Auth and push image'){
         docker.withRegistry('https://registry.hub.docker.com/', 'dockerHub') {
             myImage.push()
